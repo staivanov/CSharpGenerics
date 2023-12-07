@@ -23,7 +23,7 @@ namespace Playground.Domain.Repositories
 
         public void Save()
         {
-            //Every item is saved on already created list.
+            //No need to be implemented.
         }
     }
 }

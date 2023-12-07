@@ -2,6 +2,8 @@
 using Playground.Data.Entities;
 using Playground.Data;
 using Playground.Domain.Services;
+using Playground.Domain.Repositories;
+using Playground.Data.Services;
 
 
 namespace GenericsPlayground
@@ -10,7 +12,7 @@ namespace GenericsPlayground
     {
         private static PlaygroundContext _context = new();
         private static IRepository<Author> sqlRepo = new SQLRepository<Author>(_context);
-
+        private static IRepository<Book> listRepo = new ListRepository<Book>();
 
         static void Main()
         {
@@ -24,17 +26,35 @@ namespace GenericsPlayground
                     {
                         new() {Id = 1, Title = "TestBook", Description = "Bla bla bla", AuthorId = 4},
                         new() {Id = 2, Title = "TestBook2", Description = "Tralalala ", AuthorId = 4},
+                        new() {Id = 3, Title = "TestBook3", Description = "Kiss kiss kiss", AuthorId = 4},
                     }
                 },
             };
 
-            InsertIntoDb(authors);
-            Author searchedAuthor = GetAuthorById(id: 4);
-            IEnumerable<Book> booksOfAuthor = searchedAuthor.Books.ToList();
+            //InsertIntoDb(authors);
+            //Author searchedAuthor = GetAuthorById(id: 4);
+            //IEnumerable<Book> booksOfAuthor = searchedAuthor.Books.ToList();
 
-          
+            List<Book> myBoks = new()
+                    {
+                        new() {Id = 1, Title = "Book1", Description = "Loren ipsum"},
+                        new() {Id = 2, Title = "Book2", Description = "Triplinin "},
+                        new() {Id = 3, Title = "Book3", Description = "Asgardaqwe"},
+                    };
+            listRepo.AddRange(myBoks);
+
+            PrintAllItemsOnConsole(listRepo);
         }
 
+        public static void PrintAllItemsOnConsole(IRepository<Book> repository)
+        {
+            var books = repository.GetAll();
+
+            foreach (var book in books)
+            {
+                Console.WriteLine(book);
+            }
+        }
 
         public static Author GetAuthorById(int id)
         {

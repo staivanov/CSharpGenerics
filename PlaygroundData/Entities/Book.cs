@@ -19,5 +19,11 @@
             Title = title;
             Description = description;
         }
+
+
+        public override string ToString()
+        {
+            return $"Book title: {Title}. Description: {Description}";
+        }
     }
 }

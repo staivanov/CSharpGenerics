@@ -17,7 +17,7 @@ namespace Playground.Data.Repositories
         }
 
         public IEnumerable<T> GetAll()
-            => _context.Set<T>();
+            => _dbSet.ToList();
 
         public T GetElementById(int id)
            => _dbSet.Find(id);
