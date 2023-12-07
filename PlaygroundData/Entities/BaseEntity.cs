@@ -15,7 +15,5 @@ namespace Playground.Data.Entities
         {
             Id = id;
         }
-
-     
     }
 }

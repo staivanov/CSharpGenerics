@@ -2,29 +2,28 @@
 
 namespace Playground.Domain.Repositories
 {
-    public class ListRepository<T> : IRepository<T>
+    public class ListRepository<T> : IRepository<T> where T : IEntity
     {
         protected List<T> _items = new();
 
+        public IEnumerable<T> GetAll()
+            => _items;
 
         public void Add(T item)
-        {      
-            _items.Add(item);
-        }
+            => _items.Add(item);
 
+        public void AddRange(List<T> items)
+            => _items.AddRange(items);
+
+        public T GetElementById(int id)
+            => _items.Single(i => i.Id == id);
 
         public void Remove(T item)
-        {
-            _items.Remove(item);
-        }
+            => _items.Remove(item);
 
-
-        public void Display()
+        public void Save()
         {
-            foreach (T item in _items)
-            {
-                Console.WriteLine(item);
-            }
+            //Every item is saved on already created list.
         }
     }
 }

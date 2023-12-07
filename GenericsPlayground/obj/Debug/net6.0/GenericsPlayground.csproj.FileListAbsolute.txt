@@ -60,3 +60,4 @@ P:\C#\GenericsPlayground\GenericsPlayground\obj\Debug\net6.0\refint\GenericsPlay
 P:\C#\GenericsPlayground\GenericsPlayground\obj\Debug\net6.0\GenericsPlayground.pdb
 P:\C#\GenericsPlayground\GenericsPlayground\obj\Debug\net6.0\GenericsPlayground.genruntimeconfig.cache
 P:\C#\GenericsPlayground\GenericsPlayground\obj\Debug\net6.0\ref\GenericsPlayground.dll
+P:\C#\GenericsPlayground\GenericsPlayground\obj\Debug\net6.0\GenericsPlayground.sourcelink.json

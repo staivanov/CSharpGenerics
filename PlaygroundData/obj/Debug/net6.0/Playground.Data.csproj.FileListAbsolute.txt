@@ -26,3 +26,4 @@ P:\C#\GenericsPlayground\PlaygroundData\obj\Debug\net6.0\refint\Playground.Data.
 P:\C#\GenericsPlayground\PlaygroundData\obj\Debug\net6.0\Playground.Data.pdb
 P:\C#\GenericsPlayground\PlaygroundData\obj\Debug\net6.0\Playground.Data.genruntimeconfig.cache
 P:\C#\GenericsPlayground\PlaygroundData\obj\Debug\net6.0\ref\Playground.Data.dll
+P:\C#\GenericsPlayground\PlaygroundData\obj\Debug\net6.0\Playground.Data.sourcelink.json
