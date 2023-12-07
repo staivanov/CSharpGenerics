@@ -7,7 +7,7 @@ namespace Playground.Domain.Repositories
         protected List<T> _items = new();
 
         public IEnumerable<T> GetAll()
-            => _items;
+            => _items.ToList();
 
         public void Add(T item)
             => _items.Add(item);

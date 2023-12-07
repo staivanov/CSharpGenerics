@@ -19,11 +19,20 @@ namespace GenericsPlayground
                 new() { Id = 1, FirstName = "Stevne", LastName = "King" },
                 new() { Id = 2, FirstName = "Ivan", LastName = "Vazov" },
                 new() { Id = 3, FirstName = "Nikola", LastName = "Vaptsarov" },
+                new() {Id = 4, FirstName = "Test", LastName = "Testov",
+                    Books = new List<Book>()
+                    {
+                        new() {Id = 1, Title = "TestBook", Description = "Bla bla bla", AuthorId = 4},
+                        new() {Id = 2, Title = "TestBook2", Description = "Tralalala ", AuthorId = 4},
+                    }
+                },
             };
 
             InsertIntoDb(authors);
-            Author searchedAuthor = GetAuthorById(id: 3);
-            Console.WriteLine(searchedAuthor);
+            Author searchedAuthor = GetAuthorById(id: 4);
+            IEnumerable<Book> booksOfAuthor = searchedAuthor.Books.ToList();
+
+          
         }
 
 

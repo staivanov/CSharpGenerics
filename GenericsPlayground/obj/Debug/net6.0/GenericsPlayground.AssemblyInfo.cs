@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GenericsPlayground")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c59a277b25cc4d8a07bb44d8592637347862887c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fa6b62f00c91503d8c4fb392b601147b1c497a5")]
 [assembly: System.Reflection.AssemblyProductAttribute("GenericsPlayground")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GenericsPlayground")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
