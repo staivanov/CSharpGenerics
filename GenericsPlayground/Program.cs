@@ -5,7 +5,6 @@ using Playground.Domain.Services;
 using Playground.Domain.Repositories;
 using Playground.Data.Services;
 
-
 namespace GenericsPlayground
 {
     public class Program
@@ -31,19 +30,18 @@ namespace GenericsPlayground
                 },
             };
 
-            //InsertIntoDb(authors);
-            //Author searchedAuthor = GetAuthorById(id: 4);
-            //IEnumerable<Book> booksOfAuthor = searchedAuthor.Books.ToList();
-
             List<Book> myBoks = new()
                     {
                         new() {Id = 1, Title = "Book1", Description = "Loren ipsum"},
                         new() {Id = 2, Title = "Book2", Description = "Triplinin "},
                         new() {Id = 3, Title = "Book3", Description = "Asgardaqwe"},
                     };
-            listRepo.AddRange(myBoks);
 
+            //InsertIntoDb(authors);
+
+            AddBatch(listRepo, myBoks.ToArray());
             PrintAllItemsOnConsole(listRepo);
+
         }
 
         public static void PrintAllItemsOnConsole(IRepository<Book> repository)
@@ -61,11 +59,23 @@ namespace GenericsPlayground
             return sqlRepo.GetElementById(id);
         }
 
-
         public static void InsertIntoDb(List<Author> authors)
         {
-            sqlRepo.AddRange(authors);
+            foreach (Author author in authors)
+            {
+                sqlRepo.Add(author);
+            }
             sqlRepo.Save();
+        }
+
+        public static void AddBatch<T>(IWriteRepository<T> repository, T[] items)
+        {
+            foreach (var item in items)
+            {
+                repository.Add(item);
+            }
+
+            repository.Save();
         }
     }
 }
