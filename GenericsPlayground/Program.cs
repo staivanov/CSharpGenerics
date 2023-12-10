@@ -9,9 +9,14 @@ namespace GenericsPlayground
 {
     public class Program
     {
-        private static PlaygroundContext _context = new();
-        private static IRepository<Author> sqlRepo = new SQLRepository<Author>(_context);
-        private static IRepository<Book> listRepo = new ListRepository<Book>();
+        private static readonly PlaygroundContext _context = new();
+
+        //private static readonly AddedItem<Author> _itemAdded = new(AddedAuthor); //delegate pointing to method AddedAuthor();
+
+        private static  SQLRepository<Author> sqlRepo = new SQLRepository<Author>(_context);
+
+        private static readonly IRepository<Book> listRepo = new ListRepository<Book>();
+
 
         static void Main()
         {
@@ -29,19 +34,24 @@ namespace GenericsPlayground
                     }
                 },
             };
-
-            List<Book> myBoks = new()
+            List<Book> myBooks = new()
                     {
                         new() {Id = 1, Title = "Book1", Description = "Loren ipsum"},
                         new() {Id = 2, Title = "Book2", Description = "Triplinin "},
                         new() {Id = 3, Title = "Book3", Description = "Asgardaqwe"},
                     };
+            sqlRepo.AddedItem += SqlRepo_AddedItem;
+            InsertIntoDb(authors);
+        }
 
-            //InsertIntoDb(authors);
+        private static void SqlRepo_AddedItem(object? sender, Author e)
+        {
+            Console.WriteLine($"Author {e} was added.");
+        }
 
-            AddBatch(listRepo, myBoks.ToArray());
-            PrintAllItemsOnConsole(listRepo);
-
+        private static void AddedAuthor(Author author)
+        { //Operator 'as' cast to type, if cast isn't successufll return 'null'.
+            Console.WriteLine(author);
         }
 
         public static void PrintAllItemsOnConsole(IRepository<Book> repository)

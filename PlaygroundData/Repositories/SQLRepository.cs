@@ -3,18 +3,20 @@ using Playground.Domain.Services;
 
 namespace Playground.Data.Repositories
 {
+    //public delegate void AddedItem<in T>(T item);
+
     public class SQLRepository<T> : IRepository<T> where T : class, IEntity
     {
-        protected List<T> _items = new();
-
-        public PlaygroundContext _context;
-        public DbSet<T> _dbSet { get; set; }
+        private readonly PlaygroundContext _context;      
+        private readonly DbSet<T> _dbSet;
 
         public SQLRepository(PlaygroundContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
         }
+
+        public event EventHandler<T>? AddedItem;
 
         public IEnumerable<T> GetAll()
             => _dbSet.ToList();
@@ -23,7 +25,10 @@ namespace Playground.Data.Repositories
            => _dbSet.Find(id);
 
         public void Add(T item)
-           => _dbSet.Add(item);
+        {
+            _dbSet.Add(item);
+            AddedItem?.Invoke(this, item);
+        }
 
         public void AddRange(List<T> items)
             => _dbSet.AddRange(items);
