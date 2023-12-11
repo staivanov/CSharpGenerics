@@ -20,28 +20,9 @@ namespace GenericsPlayground
 
         static void Main()
         {
-            List<Author> authors = new()
-            {
-                new() { Id = 1, FirstName = "Stevne", LastName = "King" },
-                new() { Id = 2, FirstName = "Ivan", LastName = "Vazov" },
-                new() { Id = 3, FirstName = "Nikola", LastName = "Vaptsarov" },
-                new() {Id = 4, FirstName = "Test", LastName = "Testov",
-                    Books = new List<Book>()
-                    {
-                        new() {Id = 1, Title = "TestBook", Description = "Bla bla bla", AuthorId = 4},
-                        new() {Id = 2, Title = "TestBook2", Description = "Tralalala ", AuthorId = 4},
-                        new() {Id = 3, Title = "TestBook3", Description = "Kiss kiss kiss", AuthorId = 4},
-                    }
-                },
-            };
-            List<Book> myBooks = new()
-                    {
-                        new() {Id = 1, Title = "Book1", Description = "Loren ipsum"},
-                        new() {Id = 2, Title = "Book2", Description = "Triplinin "},
-                        new() {Id = 3, Title = "Book3", Description = "Asgardaqwe"},
-                    };
-            sqlRepo.AddedItem += SqlRepo_AddedItem;
-            InsertIntoDb(authors);
+
+
+
         }
 
         private static void SqlRepo_AddedItem(object? sender, Author e)
