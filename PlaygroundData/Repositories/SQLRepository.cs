@@ -10,7 +10,7 @@ namespace Playground.Data.Repositories
         private readonly PlaygroundContext _context;      
         private readonly DbSet<T> _dbSet;
 
-        public SQLRepository(PlaygroundContext context)
+        public SQLRepository(PlaygroundContext context) 
         {
             _context = context;
             _dbSet = _context.Set<T>();

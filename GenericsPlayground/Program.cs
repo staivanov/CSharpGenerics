@@ -4,22 +4,23 @@ using Playground.Data;
 using Playground.Domain.Services;
 using Playground.Domain.Repositories;
 using Playground.Data.Services;
+using Playground.Data.ReflectionDemo;
 
 namespace GenericsPlayground
 {
     public class Program
     {
         private static readonly PlaygroundContext _context = new();
-
         //private static readonly AddedItem<Author> _itemAdded = new(AddedAuthor); //delegate pointing to method AddedAuthor();
-
-        private static  SQLRepository<Author> sqlRepo = new SQLRepository<Author>(_context);
-
+        private static readonly SQLRepository<Author> sqlRepo = new(_context);
         private static readonly IRepository<Book> listRepo = new ListRepository<Book>();
 
 
         static void Main()
         {
+            ReflectionSample.Use();
+
+
 
 
 
@@ -50,7 +51,7 @@ namespace GenericsPlayground
             return sqlRepo.GetElementById(id);
         }
 
-        public static void InsertIntoDb(List<Author> authors)
+        public static void InsertIntoDb(List    <Author> authors)
         {
             foreach (Author author in authors)
             {

@@ -6,9 +6,10 @@ namespace Playground.Data.Services
     public interface IAuthorRepository : IRepository<Author>
     {
         public bool IsAuthorExist(Author author);
-        public new void AddRange(List<Author> items);
+        public void AddRange(List<Author> items);
         public new void Add(Author item);
         public new void Remove(Author item);
         public new void Save();
+        IEnumerable<Author> Search(string name);
     }
 }

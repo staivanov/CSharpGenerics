@@ -2,9 +2,9 @@
 {
     public class Author : BaseEntity, IComparable<Author>
     {
+        private static int authorCounter = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public List<Book> Books { get; set; }
 
         public Author(int id, string firstName, string lastName)
@@ -12,11 +12,12 @@
         {
             FirstName = firstName;
             LastName = lastName;
+            authorCounter++;
         }
 
         public Author()
         {
-            
+            authorCounter++;
         }
 
         public override string ToString()
