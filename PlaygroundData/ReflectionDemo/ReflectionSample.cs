@@ -22,7 +22,7 @@ namespace Playground.Data.ReflectionDemo
 
             Type someSpecificType = typeof(Pipeline<,>).MakeGenericType(types[0], types[1]);
             object? instanceCreated = Activator.CreateInstance(someSpecificType);
-            object? returnedTye = instanceCreated.GetType();
+            object? returnedTye = instanceCreated?.GetType();
         
 
         }
