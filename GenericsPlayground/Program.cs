@@ -4,7 +4,7 @@ using Playground.Data;
 using Playground.Domain.Services;
 using Playground.Domain.Repositories;
 using Playground.Data.Services;
-using Playground.Data.ReflectionDemo;
+using Playground.Data.GenericClasses;
 
 namespace GenericsPlayground
 {
@@ -18,10 +18,15 @@ namespace GenericsPlayground
 
         static void Main()
         {
-            ReflectionSample.Use();
-
-
-
+            BaseClassGeneric<int> baseGenericInt = new();
+            baseGenericInt.LocalCounter += 3;
+            BaseClassGeneric<string> baseGenericString = new();
+            BaseClassGeneric<string> baseGenericsString2 = new();
+            baseGenericString.LocalCounter += 5;
+            BaseClass baseClass = new();
+            Console.WriteLine($"BaseClassInt local counter : {baseGenericInt.LocalCounter}");
+            Console.WriteLine($"BaseClassString  local counter: {baseGenericString.LocalCounter}");
+            Console.WriteLine($"Number of base class generic instances: {BaseClass.GlobalCounter}.");
 
 
         }
@@ -51,7 +56,7 @@ namespace GenericsPlayground
             return sqlRepo.GetElementById(id);
         }
 
-        public static void InsertIntoDb(List    <Author> authors)
+        public static void InsertIntoDb(List <Author> authors)
         {
             foreach (Author author in authors)
             {
